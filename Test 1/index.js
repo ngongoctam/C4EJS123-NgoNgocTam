@@ -68,5 +68,10 @@ if (quanLy = 'C') {
     console.log(nhanVien);
 }
 if (quanLy = 'U') {
-    
+    let stt = prompt('Nhập số thứ tự nhân viên cần update');
+    tenNew = prompt('Nhập tên nhân viên update');
+    tuoiNew = prompt('Nhập tuổi nhân viên update');
+    mucLuongNew = prompt('Nhập mức lương nhân viên update');
+    chucVuNew = prompt('Nhập chức vụ nhân viên update');
+    nhanVien[stt]
 }
