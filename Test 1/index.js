@@ -73,5 +73,6 @@ if (quanLy = 'U') {
     tuoiNew = prompt('Nhập tuổi nhân viên update');
     mucLuongNew = prompt('Nhập mức lương nhân viên update');
     chucVuNew = prompt('Nhập chức vụ nhân viên update');
-    nhanVien[stt]
+    nhanVien[stt]git
+    }
 }
