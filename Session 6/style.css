@@ -1,0 +1,36 @@
+p {
+    color: #ff0000;
+    size: 24px;
+}
+
+#background {
+    background-color: #00FF00;
+}
+
+h2 {
+    size: 24px;
+}
+
+#div1 {
+    color: black;
+}
+
+#div2 {
+    color: blue;
+}
+
+[href="_blank"] {
+    color: yellow;
+}
+
+ul > li {
+    font-weight: bold;
+}
+
+.item span {
+    font-size: 18px;
+}
+
+.item div span {
+    font-style: italic;
+}
