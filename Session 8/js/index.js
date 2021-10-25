@@ -113,14 +113,32 @@ console.log(list);
 
 for (let i = 0; i < item.length; i++) {
     list.insertAdjacentHTML('beforeend', `
-    <li>${item[i]}</li>
+    <li>${item[i]} <button id="btn">remove</button></li>
     `)
 }
 console.log(list);
 
-let xoa = document.getElementsByName('Test Item 1')
-xoa.remove();
-// for (let i = 0; i < 2; i++) {
-//     list[i].remove();
-// }
+let xoa = document.querySelectorAll('#item_list_ul li');
+console.log(xoa);
+for (let i = 0; i < 2; i++) {
+    xoa[i].parentNode.removeChild(xoa[i]);
+}
+console.log(xoa);
 
+let a = document.getElementById('addNew');
+a.addEventListener('click', () => {
+    let belongings = document.getElementById('item_input').value;
+    list.insertAdjacentHTML('beforeend', `
+    <li>${belongings}  <button id="btn">remove</button></li>
+    `);
+    console.log(list);
+    document.getElementById('item_input').value = '';
+})
+
+let xoaBel = document.getElementById('btn');
+console.log(xoaBel);
+// for (let i = 0; i < document.getElementById('btn' button).length; i++) {
+//     xoaBel[i].addEventListener('click', () => {
+//         document.getElementById('item_input' li).remove;
+//     });
+// }
