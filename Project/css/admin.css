@@ -55,6 +55,10 @@ a {
     margin-right: 4px;
 }
 
+ul {
+    list-style-type: none;
+}
+
 label.validation-error {
     color: red;
     margin-left: 5px;
@@ -62,4 +66,15 @@ label.validation-error {
 
 .hide {
     display: none;
+}
+
+#admin {
+    display: flex;
+    justify-content: center;
+}
+
+.table {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

@@ -1,29 +1,23 @@
-var data = [
+// var data = [
        
-];
+// ];
 
 
 function add() {
-
-
-
-    var xid = document.getElementById('id').value;
+    var xid = document.getElementById('brand').value;
     var xname = document.getElementById('name').value;
     var xorigin = document.getElementById('origin').value
     var xprice = document.getElementById('price').value
-
+    var xpicture = document.getElementById('picture').value
 
     item = {
-        id: xid,
+        brand: xbrand,
         name: xname,
-       origin: xorigin,
-       price: xprice,
+        origin: xorigin,
+        price: xprice,
+        picture: xpicture
     }
-
-
   
-
-
     let index = data.findIndex((c) => c.id === xid)
     console.log(index)
 
@@ -38,9 +32,6 @@ function add() {
 
 }
 
-
-
-
 function clear() {
     document.getElementById('id').value = '';
     document.getElementById('name').value = '';
@@ -50,7 +41,7 @@ function clear() {
 
 function show() {
     var table = `<tr>
-                     <th>Id</th>
+                    <th>Id</th>
                     <th>Name</th>
                     <th>Origin</th>
                     <th>Price</th>
@@ -74,12 +65,13 @@ function show() {
 
 function Delete(id) {
     for (let i = 0; i < data.length; i++) {
-        if (data[i].id == id) {
+        if (data[i].id == id, confirm('Are you sure ?')) {
             data.splice(i, 1)
             show();
         }
     }
 }
+
 function Edit(id) {
     document.getElementById("ID");
     for (let i = 0; i <= data.length; i++) {

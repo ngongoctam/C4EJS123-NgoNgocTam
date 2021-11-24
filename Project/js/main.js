@@ -20988,32 +20988,35 @@ for (let item in data) {
 }
 
 //Show sản phẩm
+let soLuongSP = 0;
 for (let item in data) {
   for (let sanPham of data[item]) {
-    // console.log(sanPham.name);
-    // console.log(sanPham.images[0]);
-    // console.log(sanPham.old_price);
-    // console.log(sanPham.special_price);
-    // console.log(item);
-    let product = `
-    <div class="grid__column--5
-    <a class="product__item" href="#">
-    <div class="product__item--img" style="background-image: url(${sanPham.images[0]});">
-    <h4 class="product__item--name">${sanPham.name}</h4>
-    <div class="product__item--price">
-        <span class="product__item--priceOld">${sanPham.old_price}</span>
-        <span class="product__item--priceNew">${sanPham.special_price}</span>
-    </div>
-    <div class="product__item--action">
-        <span class="product__item--like">
-            <i class="ti-heart"></i>
-        </span>
-        <div class="product__item--brand">${item}</div>
-    </div>
-    </a>
-    </div>
-    `
-    listProduct.insertAdjacentHTML('beforeEnd', product);
+    if (soLuongSP < 25) {
+      let product = `
+      <div class="grid__column--5
+      <a class="product__item" href="#">
+      <div class="product__item--img" style="background-image: url(${sanPham.images[0]});">
+      <h4 class="product__item--name">${sanPham.name}</h4>
+      <div class="product__item--price">
+          <span class="product__item--priceOld">${sanPham.old_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        }</span>
+          <span class="product__item--priceNew">${sanPham.special_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        }</span>
+      </div>
+      <div class="product__item--action">
+          <span class="product__item--like">
+              <i class="ti-heart"></i>
+          </span>
+          <div class="product__item--brand">${item}</div>
+      </div>
+      </a>
+      </div>
+      `
+      listProduct.insertAdjacentHTML('beforeEnd', product);
+      soLuongSP++;
+    } else {
+      break;
+    }
   }
 }
 
@@ -21022,6 +21025,9 @@ for (let item in data) {
 // TẮT SHOW FORM MODAL
 let showForm = document.getElementById('formModal');
 showForm.style.display = 'none';
+//Tắt form Admin
+let showAdmin = document.getElementById('admin');
+showAdmin.style.display = 'none';
 
 let formRegister = document.getElementById('register');
 let formLogin = document.getElementById('login');
@@ -21085,10 +21091,74 @@ dangNhap.addEventListener('click', () => {
     console.log(checkPass)
     console.log(item.pass)
     if (item.user === checkUser && item.pass === checkPass) {
-      alert('Đăng nhập thành công')
+      // alert('Đăng nhập thành công')
+      showForm.style.display = 'none';
+      let showMain = document.getElementById('main');
+      showMain.style.display = 'none';
+      let showFooter = document.getElementById('footer');
+      showFooter.style.display = 'none';
+      showAdmin.style.display = 'block';
+      //Thêm vào list Thương hiệu
+      let listBrandAdmin = document.getElementById('selectBrand');
+      for (let item in data) {
+        let s1 = String(item.substr(0, 1)).toUpperCase();
+        let s2 = String(item.slice(1));
+        let thuongHieu = s1 + s2;
+        console.log(thuongHieu);
+        let danhMuc = `
+        <option value="0">${thuongHieu}</option>
+        `
+        listBrandAdmin.insertAdjacentHTML('beforeend', danhMuc);
+      }
     } else {
       alert('User và Mật khẩu không đúng!')
     }
   }
+})
+
+let search = document.getElementById('search');
+search.addEventListener('click', () => {
+  listProduct.innerHTML = "";
+  let textProduct = document.getElementById('textProduct').value;
+  for (item in data) {
+    for (sanPham of data[item]) {
+      let tenSP = String(sanPham.name.toLowerCase());
+      let checkText = String(textProduct.toLowerCase());
+      // console.log(tenSP.indexOf(checkText));
+      
+      if (tenSP.indexOf(checkText) >= 0) {
+        let product = `
+          <div class="grid__column--5
+          <a class="product__item" href="#">
+          <div class="product__item--img" style="background-image: url(${sanPham.images[0]});">
+          <h4 class="product__item--name">${sanPham.name}</h4>
+          <div class="product__item--price">
+              <span class="product__item--priceOld">${sanPham.old_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            }</span>
+              <span class="product__item--priceNew">${sanPham.special_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            }</span>
+          </div>
+          <div class="product__item--action">
+              <span class="product__item--like">
+                  <i class="ti-heart"></i>
+              </span>
+              <div class="product__item--brand">${item}</div>
+            </div>
+            </a>
+            </div>
+            `
+        listProduct.insertAdjacentHTML('beforeEnd', product);
+      }
+      // console.log('ok');
+    }
+
+  }
+})
+
+//Chọn thông số theo list
+let listBrand = document.getElementById('selectBrand');
+showBrand = addEventListener('select', () => {
+  document.getElementById('brand').value = listBrand.value;
+  console.log(document.getElementById('brand').value);
 })
 
