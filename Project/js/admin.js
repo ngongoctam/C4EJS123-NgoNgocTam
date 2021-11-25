@@ -1,15 +1,4 @@
-function addProduct() {
-    let thuongHieuMoi = document.getElementById('brand').value.toLowerCase();
-    let tenMoi = document.getElementById('name').value;
-    let giaMoi = document.getElementById('old_price').value;
-    let giaSaleMoi = document.getElementById('special_price').value;
-    let anhMoi = document.getElementById('images').value;
-    for (i = 0; i < data.length; i++) {
-        if (thuongHieuMoi == item) {
 
-        }
-    }
-}
 
 
 

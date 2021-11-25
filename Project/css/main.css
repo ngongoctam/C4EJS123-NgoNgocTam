@@ -6,6 +6,9 @@
 .header__navbar {
     display: flex;
     justify-content: space-between;
+    text-align: center;
+    align-items: center;
+
 }
 
 .header__navbar--list {
@@ -15,7 +18,8 @@
 }
 
 .header__navbar--item {
-    margin: 0px 8px;
+    margin: 0px 18px;
+    
 }
 
 .header__navbar--item,
@@ -46,7 +50,9 @@
 
 .header__logo {
     width: 200px;
+    cursor: pointer;
 }
+
 
 .header__logo--img {
     width: 60px;
@@ -124,18 +130,32 @@
     margin-right: 6px;
 }
 
-.category-list {
-    padding-left: 0;
+#category-list {
+    padding-left: 20px;
     list-style: none;
-}
+    
 
-.category-item__link {
+    
+}
+#category-item a{
     text-decoration: none;
-    padding: 8px 16px;
-    display: block;
+    margin-bottom: 10px;
+    font-family: Sans-serif !important;
+    color: #343a40;
+    font-weight: 550;
+
+    
+    
 }
 
-.category-item__link:hover {
+#category-item__link {
+    text-decoration:overline;
+    padding: 8px 15px;
+    display: block;
+    
+}
+
+#category-item__link:hover {
     color: var(--text-color);
 }
 
@@ -159,6 +179,7 @@
     transition: transform linear 1s;
     will-change: transform;
     cursor: pointer;
+    
 }
 
 /* .product__item:hover {
@@ -171,7 +192,17 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-color: var(--white-color);
+    object-fit: cover;
+    max-width: 100%;
+    max-height: 100%;
+   width: auto;
+   height: auto;
+   background-color: #fcf8f8;
+   border-radius: 10px;
+   
+
 }
+
 
 .product__item--img:hover {
     transform: translateY(-4px);
@@ -181,12 +212,12 @@
 }
 
 .product__item--name {
-    color: black;
-    font-size: 14px;
-    font-weight: 500;
+    color: #444444;
+    font-size: 15px;
+    font-weight: 600;
     line-height: 16px;
-    height: 32px;
-    margin: 10px 0 8px;
+    height: 34px;
+    margin: 19px 0 8px;
     padding: 0 10px;
     overflow: hidden;
     display: block;
@@ -214,6 +245,7 @@
     color: var(--main-color);
     /* margin-left: 10px; */
     margin-right: 10px;
+    margin-left: 7px;
 }
 
 .product__item--action {
@@ -233,14 +265,31 @@
 
 .product__item--brand {
     margin-bottom: 10px;
+    font-family: Sans-serif !important;
+    color: #444444;
+    text-transform: capitalize;
 }
+    
+    
+    
+
+
 
 /* ĐĂNG KÝ ĐĂNG NHẬP */
 
 .body-form {
-    padding: 14px 34px;
+    /* padding: 14px 34px;
     width: 500px;
     height: 360px;
+    margin-left:  ; */
+    background-color: rgb(242, 244, 250);
+    width: 460px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 12px;
+    padding: 32px 42px;
+    box-sizing: border-box;
 }
 
 .body-form__header {
@@ -287,5 +336,13 @@
 
 .btn--back {
     margin-right: 10px;
+}
+.btn--back:hover{
+    background-color: rgb(62, 107, 165);
+    transform: scale(1.05);
+}
+.btn--primary:hover{
+    background-color: rgb(62, 107, 165);
+    transform: scale(1.05);
 }
 

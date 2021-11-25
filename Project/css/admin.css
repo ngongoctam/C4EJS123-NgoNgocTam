@@ -29,7 +29,7 @@ input[type=number] {
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 10px;
     box-sizing: border-box;
 }
 
@@ -42,10 +42,6 @@ input[type=submit] {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-}
-
-.form-action-buttons {
-    display: flex;
 }
 
 form div.form-action-buttons {

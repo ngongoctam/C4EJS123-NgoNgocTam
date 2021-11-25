@@ -9,7 +9,7 @@ let girl = [
         surname: 'Nguyễn',
         name: 'Quỳnh Anh',
         img: 'img/qa.jpg',
-        desc:'Tìm kiếm api, Footer và Trang giới thiệu các thành viên'
+        desc:'Tìm kiếm api, Footer, Trang giới thiệu các thành viên, Chỉnh sửa lại giao diện'
     },
     {
         surname: 'Đỗ Tuấn',
@@ -21,7 +21,7 @@ let girl = [
         surname: 'Ngô Ngọc',
         name: 'Tâm',
         img: 'img/tam.jpg',
-        desc:'Xử lý data, Xử lý tổng giao diện)'
+        desc:'Xử lý data, Xử lý tổng giao diện'
     },
 ];
 let picture = document.querySelectorAll('.effect-sarah');
@@ -44,3 +44,7 @@ picture.forEach((element, index) => {
         })
     })
 })
+
+
+
+

@@ -20978,7 +20978,7 @@ for (let item in data) {
   let s1 = String(item.substr(0, 1)).toUpperCase();
   let s2 = String(item.slice(1));
   let thuongHieu = s1 + s2;
-  console.log(thuongHieu);
+  // console.log(thuongHieu);
   let danhMuc = `
     <li id="category-item">
     <a href="#" id="category-item__link">${thuongHieu}</a>
@@ -21104,7 +21104,7 @@ dangNhap.addEventListener('click', () => {
         let s1 = String(item.substr(0, 1)).toUpperCase();
         let s2 = String(item.slice(1));
         let thuongHieu = s1 + s2;
-        console.log(thuongHieu);
+        // console.log(thuongHieu);
         let danhMuc = `
         <option value="${thuongHieu}">${thuongHieu}</option>
         `
@@ -21167,7 +21167,7 @@ listBrand.addEventListener('change', () => {
   let listProductAdmin = document.getElementById('selectProduct');
   listProductAdmin.innerHTML = "";
   let newProduct = data[listBrand.value.toLowerCase()];
-  console.log(newProduct);
+  // console.log(newProduct);
   listProductAdmin.insertAdjacentHTML('beforeend', '<option value="0">Select Product:</option>');
   for (i = 0; i < newProduct.length; i++) {
     let sanPham = `
@@ -21178,6 +21178,14 @@ listBrand.addEventListener('change', () => {
   }
 })
 let listProductNew = document.getElementById('selectProduct');
+
+//Lưu giá trị sản phẩm cũ
+let thuongHieuCu = document.getElementById('brand').value.toLowerCase();
+let tenCu = document.getElementById('name').value;
+let giaCu = document.getElementById('old_price').value;
+let giaSaleCu = document.getElementById('special_price').value;
+let anhCu = document.getElementById('images').value;
+
 
 listProductNew.addEventListener('change', () => {
   document.getElementById('name').value = listProductNew.value;
@@ -21191,6 +21199,136 @@ listProductNew.addEventListener('change', () => {
       document.getElementById('special_price').value = data[xNow][i].special_price;
       document.getElementById('images').value = data[xNow][i].images;
 
+      thuongHieuCu = document.getElementById('brand').value.toLowerCase();
+      tenCu = document.getElementById('name').value;
+      giaCu = document.getElementById('old_price').value;
+      giaSaleCu = document.getElementById('special_price').value;
+      anhCu = document.getElementById('images').value;
     }
   }
+})
+
+
+//Xử lý thao tác sản phẩm trang Admin
+//Tạo mới sản phẩm
+let addProductbtn = document.getElementById('addProduct');
+addProductbtn.addEventListener('click', () => {
+  let thuongHieuMoi = document.getElementById('brand').value.toLowerCase();
+  let tenMoi = document.getElementById('name').value;
+  let giaMoi = document.getElementById('old_price').value;
+  let giaSaleMoi = document.getElementById('special_price').value;
+  let anhMoi = document.getElementById('images').value;
+  for (let item in data) {
+    console.log(data[item]);
+      if (thuongHieuMoi == item) {
+        data[item].push({
+          'name': tenMoi,
+          'old_price': giaMoi,
+          'special_price': giaSaleMoi,
+          'images': [anhMoi]
+        })
+      }
+  }
+  document.getElementById('selectBrand').value = '';
+  document.getElementById('selectProduct').value = '';
+  document.getElementById('brand').value = '';
+  document.getElementById('name').value = '';
+  document.getElementById('old_price').value = '';
+  document.getElementById('special_price').value = '';
+  document.getElementById('images').value = '';
+  alert('Đã tạo thành công!')
+});
+
+//Show sản phẩm
+let showNewProductbtn = document.getElementById('showNewProduct');
+showNewProductbtn.addEventListener('click', () => {
+  //Quay lại màn hình chính
+  showForm.style.display = 'none';
+  let showMain = document.getElementById('main');
+  showMain.style.display = 'block';
+  let showFooter = document.getElementById('footer');
+  showFooter.style.display = 'block';
+  showAdmin.style.display = 'none';
+  //Show lại data đã update
+  let soLuongSP = 0;
+  listProduct.innerHTML = "";
+  for (item in data) {
+    for (sanPham of data[item]) {
+      if (soLuongSP < 25) {
+        let product = `
+        <div class="grid__column--5
+        <a class="product__item" href="#">
+        <div class="product__item--img" style="background-image: url(${sanPham.images[0]});">
+        <h4 class="product__item--name">${sanPham.name}</h4>
+        <div class="product__item--price">
+            <span class="product__item--priceOld">${sanPham.old_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+          }</span>
+            <span class="product__item--priceNew">${sanPham.special_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+          }</span>
+        </div>
+        <div class="product__item--action">
+            <span class="product__item--like">
+                <i class="ti-heart"></i>
+            </span>
+            <div class="product__item--brand">${item}</div>
+        </div>
+        </a>
+        </div>
+        `
+        listProduct.insertAdjacentHTML('beforeEnd', product);
+        soLuongSP++;
+      } else {
+        break;
+      }
+    }
+
+  }
+})
+
+//Sửa sản phẩm
+let editProductbtn = document.getElementById('editProduct');
+editProductbtn.addEventListener('click', () => {
+  let thuongHieuMoi = document.getElementById('brand').value.toLowerCase();
+  let tenMoi = document.getElementById('name').value;
+  let giaMoi = document.getElementById('old_price').value;
+  let giaSaleMoi = document.getElementById('special_price').value;
+  let anhMoi = document.getElementById('images').value;
+  for (let item in data) {
+    for (sanPham of data[item]) {
+      if (thuongHieuMoi == item && String(tenMoi) == sanPham.name) {
+        sanPham.old_price = giaMoi;
+        sanPham.special_price = giaSaleMoi;
+        sanPham.images[0] = anhMoi;
+      }
+    }
+  }
+  document.getElementById('selectBrand').value = '';
+  document.getElementById('selectProduct').value = '';
+  document.getElementById('brand').value = '';
+  document.getElementById('name').value = '';
+  document.getElementById('old_price').value = '';
+  document.getElementById('special_price').value = '';
+  document.getElementById('images').value = '';
+  alert('Chỉnh sửa thành công!')
+})
+
+//Xóa sản phẩm
+let delProductbtn = document.getElementById('delProduct');
+delProductbtn.addEventListener('click', () => {
+  let testTen = document.getElementById('name').value;
+  for (let item in data) {
+    for (i = 0; i < data[item].length; i++) {
+      if (testTen == data[item][i].name) {
+        data[item].splice(i, 1);
+      }
+    }
+  }
+  document.getElementById('selectBrand').value = '';
+  document.getElementById('selectProduct').value = '';
+  document.getElementById('brand').value = '';
+  document.getElementById('name').value = '';
+  document.getElementById('old_price').value = '';
+  document.getElementById('special_price').value = '';
+  document.getElementById('images').value = '';
+  alert('Đã xóa!')
 })
