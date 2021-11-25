@@ -217,29 +217,35 @@
                     <td>
                         <div id="Brand" >
                             <label>Thương hiệu</label>
-                                <div class="custom-select" style="width:200px;">
-                                    <select id="selectBrand">
-                                    <option value="0">Select Brand:</option>
-                                    </select>
-                                </div>
+                            <select id="selectBrand">
+                                <option value="0">Select Brand:</option>
+                            </select>
+                                <!-- <div class="custom-select" style="width:200px;">
+                                </div> -->
                             <input type="text" id="brand">
                         </div>
                         <div>
                             <label>Tên Sản phẩm</label>
+                            <select id="selectProduct">
+                                <!-- <option value="0">Select Product:</option> -->
+                            </select>
                             <input type="text" id="name">
                         </div>
                         <div>
                             <label>Giá gốc</label>
-                            <input type="text" name="origin" id="origin">
+                            <input type="text" name="old_price" id="old_price">
                         </div>
                         <label>Giá Khuyến mãi</label>
-                        <input type="text" name="price" id="price">
+                        <input type="text" name="special_price" id="special_price">
                         <div>
                             <label>Hình ảnh</label>
-                            <input type="text" name="picture" id="picture">
+                            <input type="text" name="images" id="images">
                         </div>
                         <div class="form-action-buttons">
-                            <Button onclick="add()">Submit</Button>
+                            <Button onclick="editProduct()">Edit</Button>
+                            <Button onclick="delProduct()">Delete</Button>
+                            <Button onclick="addProduct()">Create</Button>
+                            <Button onclick="showNewProduct()">Show</Button>
                         </div>
                     </td>
                     

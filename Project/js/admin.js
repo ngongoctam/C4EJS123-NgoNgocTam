@@ -1,6 +1,30 @@
-// var data = [
-       
-// ];
+function addProduct() {
+    let thuongHieuMoi = document.getElementById('brand').value.toLowerCase();
+    let tenMoi = document.getElementById('name').value;
+    let giaMoi = document.getElementById('old_price').value;
+    let giaSaleMoi = document.getElementById('special_price').value;
+    let anhMoi = document.getElementById('images').value;
+    for (i = 0; i < data.length; i++) {
+        if (thuongHieuMoi == item) {
+
+        }
+    }
+}
+
+
+
+function Edit(id) {
+    document.getElementById("ID");
+    for (let i = 0; i <= data.length; i++) {
+        if (data[i].id == id) {
+            document.getElementById('id').value = data[i].id;
+            document.getElementById('name').value = data[i].name;
+            document.getElementById('origin').value = data[i].origin;
+            document.getElementById('price').value = data[i].price;
+        }
+
+    }
+}
 
 
 function add() {
@@ -72,15 +96,3 @@ function Delete(id) {
     }
 }
 
-function Edit(id) {
-    document.getElementById("ID");
-    for (let i = 0; i <= data.length; i++) {
-        if (data[i].id == id) {
-            document.getElementById('id').value = data[i].id;
-            document.getElementById('name').value = data[i].name;
-            document.getElementById('origin').value = data[i].origin;
-            document.getElementById('price').value = data[i].price;
-        }
-
-    }
-}

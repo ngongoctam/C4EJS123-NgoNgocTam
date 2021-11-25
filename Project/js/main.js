@@ -21052,8 +21052,8 @@ showBack2.addEventListener('click', () => {
 
 var acc = [
   {
-    user: 'admin',
-    pass: '123'
+    user: '',
+    pass: ''
   }
 ];
 
@@ -21106,7 +21106,7 @@ dangNhap.addEventListener('click', () => {
         let thuongHieu = s1 + s2;
         console.log(thuongHieu);
         let danhMuc = `
-        <option value="0">${thuongHieu}</option>
+        <option value="${thuongHieu}">${thuongHieu}</option>
         `
         listBrandAdmin.insertAdjacentHTML('beforeend', danhMuc);
       }
@@ -21157,8 +21157,40 @@ search.addEventListener('click', () => {
 
 //Chọn thông số theo list
 let listBrand = document.getElementById('selectBrand');
-showBrand = addEventListener('select', () => {
+listBrand.addEventListener('change', () => {
   document.getElementById('brand').value = listBrand.value;
-  console.log(document.getElementById('brand').value);
+  //Thêm list sản phẩm sau khi chọn thương hiệu
+  document.getElementById('name').value = "";
+  document.getElementById('old_price').value = "";
+  document.getElementById('special_price').value = "";
+  document.getElementById('images').value = "";
+  let listProductAdmin = document.getElementById('selectProduct');
+  listProductAdmin.innerHTML = "";
+  let newProduct = data[listBrand.value.toLowerCase()];
+  console.log(newProduct);
+  listProductAdmin.insertAdjacentHTML('beforeend', '<option value="0">Select Product:</option>');
+  for (i = 0; i < newProduct.length; i++) {
+    let sanPham = `
+    <option value="${newProduct[i].name}">${newProduct[i].name}</option>
+    `
+    // console.log(sanPham);
+    listProductAdmin.insertAdjacentHTML('beforeend', sanPham);
+  }
 })
+let listProductNew = document.getElementById('selectProduct');
 
+listProductNew.addEventListener('change', () => {
+  document.getElementById('name').value = listProductNew.value;
+  let x = document.getElementById('brand');
+  let xNow = x.value.toLowerCase();
+  let y = document.getElementById('name');
+  let yNow = y.value;
+  for (i = 0; i < data[xNow].length; i++) {
+    if (data[xNow][i].name == document.getElementById('name').value) {
+      document.getElementById('old_price').value = data[xNow][i].old_price;
+      document.getElementById('special_price').value = data[xNow][i].special_price;
+      document.getElementById('images').value = data[xNow][i].images;
+
+    }
+  }
+})
